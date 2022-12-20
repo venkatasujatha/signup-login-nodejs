@@ -108,9 +108,7 @@ const emailSend = async (req, res) => {
   try {
     const data = await studentRepo.findOneBy({ userName: req.body.userName })
     console.log(data.userName)
-   
-    const response = {}
-    if (data) {
+  
       let otpCode = Math.floor(100000 + Math.random() * 900000)
       console.log(otpCode)
       const now = new Date();
@@ -126,14 +124,12 @@ const emailSend = async (req, res) => {
       res.status(200).json({
         message: 'email send successfully'
       })
-    } else {
-      console.log('userName is not exists')
-      res.status(400).json({
-        message: 'userName is not exists'
-      })
-    }
+    
   } catch (error) {
     console.log(error.message)
+    res.status(400).json({
+      message: 'userName is not exists'
+    })
   }
 }
 //change password
@@ -188,29 +184,29 @@ const changePassword = async (req, res) => {
 }
 
 //node mailer
-const mailer = (userName, code) => {
-  var nodemailer = require('nodemailer')
-  var transporter = nodemailer.createTransport({
-    service: 'gmail',
-    port: 587,
-    secure: false,
-    auth: {
-      userName: 'code1@gmail.com',
-      password: '1234'
-    }
-  })
-  var mailOptions = {
-    from: 'code1@gmail.com',
-    to: 'code2@gmail.com',
-    subject: 'sending emailusing nodejs',
-    text: 'hi'
-  }
-  transporter.sendMail(mailOptions, function (err, info) {
-    if (err) {
-      console.log(err)
-    } else {
-      console.log('email sent:' + info.response)
-    }
-  })
-}
+// const mailer = (userName, code) => {
+//   var nodemailer = require('nodemailer')
+//   var transporter = nodemailer.createTransport({
+//     service: 'gmail',
+//     port: 587,
+//     secure: false,
+//     auth: {
+//       userName: 'code1@gmail.com',
+//       password: '1234'
+//     }
+//   })
+//   var mailOptions = {
+//     from: 'code1@gmail.com',
+//     to: 'code2@gmail.com',
+//     subject: 'sending emailusing nodejs',
+//     text: 'hi'
+//   }
+//   transporter.sendMail(mailOptions, function (err, info) {
+//     if (err) {
+//       console.log(err)
+//     } else {
+//       console.log('email sent:' + info.response)
+//     }
+//   })
+// }
 module.exports = { signUp, login, updatePassword, emailSend, changePassword }
