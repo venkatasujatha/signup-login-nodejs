@@ -6,6 +6,6 @@ router.post('/signup', student.signUp)
 router.post('/login', student.login)
 router.post('/updatePassword', student.updatePassword)
 router.post('/emailSend', student.emailSend)
-router.put('/changePassword', student.changePassword)
+router.post('/changePassword', student.changePassword)
 //router.post('/otplogin',otp.otpLogin)
 module.exports = router

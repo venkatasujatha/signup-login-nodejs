@@ -140,7 +140,6 @@ const changePassword = async (req, res) => {
       code: req.body.otpCode
     })
     console.log(data.code)
-    const response = {}
     if (!data) {
       
       console.log("data not exists")
