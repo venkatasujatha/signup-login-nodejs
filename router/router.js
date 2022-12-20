@@ -1,0 +1,11 @@
+const student = require('../controller/studentController')
+const otp =require('../controller/studentController')
+const router = require('express').Router()
+const bcrypt = require('bcryptjs')
+router.post('/signup', student.signUp)
+router.post('/login', student.login)
+router.post('/updatePassword', student.updatePassword)
+router.post('/emailSend', student.emailSend)
+router.put('/changePassword', student.changePassword)
+//router.post('/otplogin',otp.otpLogin)
+module.exports = router
