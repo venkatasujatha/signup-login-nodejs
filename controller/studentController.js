@@ -160,6 +160,9 @@ const changePassword = async (req, res) => {
           );
           console.log("resp", resp);
         }
+        else{
+          console.log("please enter valid otp")
+        }
         res.status(200).json({
           message: "password changed successfully",
         });
