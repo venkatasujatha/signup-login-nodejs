@@ -120,7 +120,7 @@ const emailSend = async (req, res) => {
 
     console.log("please check the db for otp");
     res.status(200).json({
-      message: "email send successfully",
+      message: "otp genetated successfully",
     });
   } catch (error) {
     console.log(error.message);
